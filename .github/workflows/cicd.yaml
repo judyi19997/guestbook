@@ -7,16 +7,8 @@ jobs:
   ci-job:
     runs-on: ubuntu-latest
     steps:
-    - run: echo "Continuous Integration"
-        
-  cd-job:
-    needs: [ ci-job ]
-    runs-on: ubuntu-latest
-    steps:
-    - run: echo "Continuous Deployment"
-
-  noti-job:
-    needs: [ cd-job ]
-    runs-on: ubuntu-latest
-    steps:
-    - run: echo "Notification"
+    - name: Check Out
+      run: |
+        ls -l ~/
+        git clone https://github.com/yu3papa/guestbook.git
+        tree -L 5 ~/work/guestbook
