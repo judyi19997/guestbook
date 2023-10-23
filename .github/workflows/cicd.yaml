@@ -7,18 +7,16 @@ jobs:
   ci-job:
     runs-on: ubuntu-latest
     steps:
-    - name: ?ㅽ뻾?섍꼍 遺꾩꽍 <- ??紐낅졊???댁슜
-      run: |
-        hostnamectl
-        id
-        pwd
-        cat /proc/$(echo $$)/cmdline
-        env | sort
-        java -version
-    - name: Action 遺꾩꽍 <- Set up JDK 17
-      uses: actions/setup-java@v3
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-    - name: JAVA 踰꾩쟾 ?뺤씤
-      run: java -version
+    - run: echo "Continuous Integration"
+        
+  cd-job:
+    needs: [ ci-job ]
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo "Continuous Deployment"
+
+  noti-job:
+    needs: [ cd-job ]
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo "Notification"
