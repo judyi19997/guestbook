@@ -8,7 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Check Out
+      uses: actions/checkout@v3
+
+    - name: 소스코드 확인
       run: |
-        ls -l ~/
-        git clone https://github.com/yu3papa/guestbook.git
         tree -L 5 ~/work/guestbook
